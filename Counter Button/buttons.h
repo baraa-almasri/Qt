@@ -7,10 +7,11 @@ class buttons: public QWidget{
     Q_OBJECT
 public slots:
     void add();
+    void subtract();
 public:
     buttons(QWidget *parentPtr);
 private:
-    QPushButton *plus, *minus, *equals;
+    QPushButton *plus, *minus;
     double counter = 0;
     QLabel *count;
 
