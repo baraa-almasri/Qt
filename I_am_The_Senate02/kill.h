@@ -10,7 +10,6 @@ public:
     //here's a new thing
     //declare a constructor here
     //and provide its body in the .cpp file
-    bool state;
     kill(QWidget *parentPTR);
 public slots:
     void reveal();
