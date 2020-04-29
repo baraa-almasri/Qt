@@ -9,36 +9,40 @@ buttons::buttons(QWidget *parent): QWidget(){
 
     lcd = new QLCDNumber(16,parent);
     lcd->setDecMode();
-    grid->addWidget(lcd,0,1,3,4);
+    grid->addWidget(lcd,1,1,2,5);
 
 
     plus = new QPushButton("+",parent);
     //plus->setGeometry(40,40,25,25);
     connect(plus,SIGNAL(clicked()),this,SLOT(add()));
 
-    grid->addWidget(plus,3,1,1,1);
+    grid->addWidget(plus,6,4,1,1);
 
     minus = new QPushButton("-",parent);
     //minus->setGeometry(80,40,25,25);
     connect(minus,SIGNAL(clicked()),this,SLOT(sub()));
 
-    grid->addWidget(minus,3,2,1,1);
+    grid->addWidget(minus,6,5,1,1);
 
     mult = new QPushButton("*",parent);
     //mult->setGeometry(120,40,25,25);
     connect(mult,SIGNAL(clicked()),this,SLOT(multiply()));
 
-    grid->addWidget(mult,3,3,1,1);
+    grid->addWidget(mult,5,4,1,1);
 
     div = new QPushButton("/",parent);
     //div->setGeometry(160,40,25,25);
     connect(div,SIGNAL(clicked()),this,SLOT(divide()));
-    grid->addWidget(div,3,4,1,1);
+    grid->addWidget(div,5,5,1,1);
 
     equals = new QPushButton("=",parent);
-    equals->setFixedSize(80,78);
+    //equals->setFixedSize(80,78);
     connect(equals,SIGNAL(clicked()),this,SLOT(equalsf()));
-    grid->addWidget(equals,4,4,0,1);
+    grid->addWidget(equals,7,5,1,1);
+
+    ce = new QPushButton("CE",parent);
+    connect(ce,SIGNAL(clicked()),this,SLOT(erase()));
+    grid->addWidget(ce,4,4,1,2);
 
     //numbers
     seven = new QPushButton("7",parent);
@@ -81,9 +85,7 @@ buttons::buttons(QWidget *parent): QWidget(){
     connect(zero,SIGNAL(clicked()),this,SLOT(addZero()));
     grid->addWidget(zero,7,1,1,1);
 
-    ce = new QPushButton("CE",parent);
-    connect(ce,SIGNAL(clicked()),this,SLOT(erase()));
-    grid->addWidget(ce,7,2,1,3);
+
 
 
 
@@ -133,15 +135,13 @@ void buttons::equalsf(){
             result *= otherNumber;
             break;
         case '/':
-            result /= otherNumber;
             if (result == 0){
                 QMessageBox::warning(this,"Warning!","Hold up you can't devide by zero!, look at this mess you ruined the number :(");
                 result = -69420;
-                lcd->display(result);
             }
             else{
-                this->result /= otherNumber;
-                lcd->display(result);
+                result /= otherNumber;
+                result *= 10;
             }
             break;
     }
