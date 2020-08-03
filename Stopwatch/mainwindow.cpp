@@ -28,22 +28,21 @@ MainWindow::~MainWindow() {
 
 // finite stopwatch
 void MainWindow::startFiniteStopWatch() {
-    this->seconds = ui->ammountOfSeconds->value();
+    //this->popupDialpad->setSeconds( ui->ammountOfSeconds->value() );
 
-    for(qreal kurrentSecond = 1; kurrentSecond <= this->seconds + 0.1; kurrentSecond += 0.1) {
+    this->ui->ammountOfSeconds->setValue(this->popupDialpad->getSeconds());
+
+    for(qreal kurrentSecond = 0; kurrentSecond <= this->ui->ammountOfSeconds->value() + 0.1; kurrentSecond += 0.1) {
         if(this->stop){
             break;
         }
 
         this->ui->secsDisplay->display(kurrentSecond);
-
         if( (int)kurrentSecond % 60 == 0 ) {
             kurrentSecond += 2.0;
             playSound("qrc:/mp3s/timerFinishes.mp3", 1);
         }
-
         delayInMilliseconds(0.1 * 1000);
-
     }
 
     playSound("qrc:/mp3s/timerFinishes.mp3", 3);
@@ -59,13 +58,11 @@ void MainWindow::startInfiniteStopWatch() {
 
     playSound("qrc:/mp3s/timerFinishes.mp3", 1);
 
-    for(qreal kurrentSecond = 1;  ; kurrentSecond += 0.1) {
+    for(qreal kurrentSecond = 0;  ; kurrentSecond += 0.1) {
         if(this->stop){
             break;
         }
-
         this->ui->secsDisplay->display(kurrentSecond);
-
         if( (int)kurrentSecond % 60 == 0 ) {
             kurrentSecond += 2.0;
             playSound("qrc:/mp3s/timerFinishes.mp3", 1);
@@ -76,12 +73,14 @@ void MainWindow::startInfiniteStopWatch() {
     }
 }
 
-
+#include <QMessageBox>
 void MainWindow::setSeconds_clicked() {
     // before calling the popup window, you need to create the window form
     // , include its header file in this window
     // and create an instance object of that window to be able to use it
-
+    QMessageBox::warning(this, "LOL", "Currently broken");
+    // reset seconds
+    this->popupDialpad->setSeconds(0);
     this->popupDialpad->show();
     //dp->setModal(true);
     //dp->exec();

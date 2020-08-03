@@ -9,14 +9,28 @@ namespace Ui {
 
 class dialpad : public QDialog {
     Q_OBJECT
+public slots:
+    void addOne();
+    void addTwo();
+    void addThree();
+    void addFour();
+    void addFive();
+    void addSix();
+    void addSeven();
+    void addEight();
+    void addNine();
+    void addZero();
 
 public:
     explicit dialpad(QWidget *parent = nullptr);
     ~dialpad();
 
+    qreal getSeconds();
+    void setSeconds(qreal);
+
 private:
     Ui::dialpad *ui;
-
+    qreal seconds;
 };
 
 #endif // DIALPAD_H

@@ -39,7 +39,6 @@ private: // variables
     Ui::MainWindow *ui;
     // dialout instance object
     dialpad *popupDialpad;
-    qreal seconds;
     bool stop;
 };
 
