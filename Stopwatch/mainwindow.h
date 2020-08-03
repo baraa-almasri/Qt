@@ -19,27 +19,28 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
-public slots:
-    void startFiniteStopWatch();
-    void startInfiniteStopWatch();
-    void setSeconds_clicked();
-
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    static qreal seconds;
+public slots:
+    void startFiniteStopWatch();
+    void startInfiniteStopWatch();
+    void setSeconds_clicked();
+    void stopTimer();
+
+private: // functions
+    // static functions
+    static void playSound(QString, int);
+    static void delayInMilliseconds(double);
 
 
-private:
+private: // variables
     Ui::MainWindow *ui;
     // dialout instance object
     dialpad *popupDialpad;
-
-    void exitApp();
-
-    static void playSound(QString, int);
-    static void delayInMilliseconds(double);
+    qreal seconds;
+    bool stop;
 };
 
 #endif // MAINWINDOW_H
