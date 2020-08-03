@@ -30,7 +30,6 @@ dialpad::~dialpad() {
 void dialpad::addOne(){
     this->seconds *= 10;
     this->seconds += 1;
-    printf("%lf\n", seconds);
 }
 void dialpad::addTwo(){
     this->seconds *= 10;

@@ -28,7 +28,6 @@ MainWindow::~MainWindow() {
 
 // finite stopwatch
 void MainWindow::startFiniteStopWatch() {
-    //this->popupDialpad->setSeconds( ui->ammountOfSeconds->value() );
 
     this->ui->ammountOfSeconds->setValue(this->popupDialpad->getSeconds());
 
@@ -38,14 +37,16 @@ void MainWindow::startFiniteStopWatch() {
         }
 
         this->ui->secsDisplay->display(kurrentSecond);
-        if( (int)kurrentSecond % 60 == 0 ) {
+
+        if( kurrentSecond >= 60 && (int)kurrentSecond % 60 == 0 ) {
             kurrentSecond += 2.0;
-            playSound("qrc:/mp3s/timerFinishes.mp3", 1);
+            playSound("qrc:/mp3s/timerFinishes.mp3");
         }
+
         delayInMilliseconds(0.1 * 1000);
     }
 
-    playSound("qrc:/mp3s/timerFinishes.mp3", 3);
+    playSound("qrc:/mp3s/timerFinishes.mp3");
 
 }
 
@@ -56,21 +57,18 @@ void MainWindow::stopTimer() {
 // infinte stopwatch
 void MainWindow::startInfiniteStopWatch() {
 
-    playSound("qrc:/mp3s/timerFinishes.mp3", 1);
-
     for(qreal kurrentSecond = 0;  ; kurrentSecond += 0.1) {
         if(this->stop){
             break;
         }
         this->ui->secsDisplay->display(kurrentSecond);
-        if( (int)kurrentSecond % 60 == 0 ) {
-            kurrentSecond += 2.0;
-            playSound("qrc:/mp3s/timerFinishes.mp3", 1);
-        }
+
 
         delayInMilliseconds(0.1 * 1000);
 
     }
+
+    playSound("qrc:/mp3s/timerFinishes.mp3");
 }
 
 #include <QMessageBox>

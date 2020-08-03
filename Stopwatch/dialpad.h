@@ -9,6 +9,7 @@ namespace Ui {
 
 class dialpad : public QDialog {
     Q_OBJECT
+
 public slots:
     void addOne();
     void addTwo();

@@ -31,7 +31,7 @@ public slots:
 
 private: // functions
     // static functions
-    static void playSound(QString, int);
+    static void playSound(QString);
     static void delayInMilliseconds(double);
 
 
