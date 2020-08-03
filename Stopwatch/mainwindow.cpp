@@ -24,21 +24,29 @@ void MainWindow::startFiniteStopWatch() {
 
     for(qreal kurrentSecond = 1; kurrentSecond <= seconds + 0.1; kurrentSecond += 0.1) {
         this->ui->secsDisplay->display(kurrentSecond);
+        if( (int)kurrentSecond % 60 == 0 ) {
+            kurrentSecond += 2.0;
+            playSound("qrc:/mp3s/timerFinishes.mp3", 1);
+        }
         delayInMilliseconds(0.1 * 1000);
     }
 
-    playSound("/home/bebo/The Force/Qt/Stopwatch/timerFinishes.mp3", 3);
+    playSound("qrc:/mp3s/timerFinishes.mp3", 3);
 
 }
 
 // infinte stopwatch
 void MainWindow::startInfiniteStopWatch() {
 
-    playSound("/home/bebo/The Force/Qt/Stopwatch/timerFinishes.mp3", 1);
+    playSound("qrc:/mp3s/timerFinishes.mp3", 1);
 
     for(qreal kurrentSecond = 1; ; kurrentSecond += 0.1) {
         this->ui->secsDisplay->display(kurrentSecond);
-        delayInMilliseconds(0.1 * 1000);
+        if( (int)kurrentSecond % 60 == 0 ) {
+            kurrentSecond += 2.0;
+            playSound("qrc:/mp3s/timerFinishes.mp3", 1);
+        }
+	delayInMilliseconds(0.1 * 1000);
     }
 }
 

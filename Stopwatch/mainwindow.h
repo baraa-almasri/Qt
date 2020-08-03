@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QAbstractButton>
 #include <QMediaPlayer>
+#include <math.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

@@ -15,7 +15,7 @@ void MainWindow::playSound(QString filePath, int playingTime) {
     QMediaPlayer *player = new QMediaPlayer;
 
     for(qreal kurrentSecond = 1; kurrentSecond <=  playingTime ; kurrentSecond++) {
-        player->setMedia(QUrl::fromLocalFile(filePath));
+        player->setMedia(QUrl(filePath));
         player->setVolume(100);
         player->play();
 
