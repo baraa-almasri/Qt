@@ -1,6 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-    <file>mp3s/timerFinishes.mp3</file>
+    <file>mp3s/timerFinishes(goat).mp3</file>
+    <file>mp3s/timerFinishes(blyaaaat).mp3</file>
 </qresource>
 </RCC>
 

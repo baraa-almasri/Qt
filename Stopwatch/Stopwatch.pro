@@ -19,15 +19,18 @@ SOURCES += \
     dialpad.cpp \
     main.cpp \
     mainwindow.cpp \
+    settings.cpp \
     staticFunctions.cpp
 
 HEADERS += \
     dialpad.h \
-    mainwindow.h
+    mainwindow.h \
+    settings.h
 
 FORMS += \
     dialpad.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    settings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

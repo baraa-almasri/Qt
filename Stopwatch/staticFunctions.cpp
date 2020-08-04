@@ -15,7 +15,15 @@ void MainWindow::delayInMilliseconds( double millisecondsToWait ) {
 void MainWindow::playSound(QString filePath) {
     QMediaPlayer *player = new QMediaPlayer;
 
-    player->setMedia(QUrl(filePath));
+    // will be discussed later
+    if(filePath[0] == 'q') {
+        player->setMedia(QUrl(filePath));
+    }
+    else {
+        player->setMedia(QUrl::fromLocalFile(filePath));
+    }
+    //
+
     player->setVolume(100);
     player->play();
 

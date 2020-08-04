@@ -7,7 +7,7 @@
 #include <QMediaPlayer>
 #include <math.h>
 #include "dialpad.h"
-
+#include "settings.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,6 +28,7 @@ public slots:
     void startInfiniteStopWatch();
     void setSeconds_clicked();
     void stopTimer();
+    void openSettings();
 
 private: // functions
     // static functions
@@ -37,9 +38,16 @@ private: // functions
 
 private: // variables
     Ui::MainWindow *ui;
-    // dialout instance object
+    // dialpad instance object
     dialpad *popupDialpad;
+    // stoping condition
     bool stop;
+    // ammount of seconds of the stopwatch
+    qreal seconds;
+    // time up file path
+    QString timeUp;
+    // settings instance object
+    Settings *popupSettings;
 };
 
 #endif // MAINWINDOW_H
