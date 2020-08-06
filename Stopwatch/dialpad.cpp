@@ -26,6 +26,11 @@ dialpad::~dialpad() {
     delete ui;
 }
 
+// close the dialog
+void dialpad::GTFOH() {
+
+}
+
 //Numbers
 void dialpad::addOne(){
     this->seconds *= 10;

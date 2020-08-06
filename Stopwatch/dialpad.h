@@ -21,6 +21,7 @@ public slots:
     void addEight();
     void addNine();
     void addZero();
+    void GTFOH();
 
 public:
     explicit dialpad(QWidget *parent = nullptr);
