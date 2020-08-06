@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QChar>
+#include <QCharRef>
 #include <string>
 using std::string;
 
@@ -50,12 +52,16 @@ public:
     static QString convertDecimalToHexadecimal(lli);
     // convert from binary
     static QString convertBinaryToDecimal(lli);
+    static QString convertBinaryToOctal(lli);
+    static QString convertBinaryToHexadecimal(lli);
     // convert from octal
     static QString convertOctalToDecimal(lli);
     static QString convertOctalToHexadecimal(lli);
+    static QString convertOctalToBinary(lli);
     // convert from hexadecimal
-    static QString converyHexadecimalToDecimal(QString);
+    static QString convertHexadecimalToDecimal(QString);
     static QString convertHexadecimalToOctal(QString);
+    static QString convertHexadecimalToBinary(QString);
 
 };
 #endif // MAINWINDOW_H

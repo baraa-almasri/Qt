@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 
-// convert from decimal
 QString MainWindow::convertDecimalToBinary(lli number) {
     // a string to store binary number
     QString binaryNumber;
@@ -63,7 +62,6 @@ QString MainWindow::convertDecimalToHexadecimal(lli number) {
     return MainWindow::reverseString(hexaDecimalNum);
 }
 
-// convert from binary
 QString MainWindow::convertBinaryToDecimal(lli number) {
     lli dec_value = 0;
 
@@ -83,7 +81,6 @@ QString MainWindow::convertBinaryToDecimal(lli number) {
     return  QString::number(dec_value);
 }
 
-// convert from octal
 QString MainWindow::convertOctalToDecimal(lli number) {
     lli dec_value = 0;
 
@@ -109,11 +106,16 @@ QString MainWindow::convertOctalToDecimal(lli number) {
 
 QString MainWindow::convertOctalToHexadecimal(lli number) {
 
+    QString converted0;
+    converted0 = convertOctalToDecimal(number);
+    QString hexadecimal;
+    hexadecimal = convertDecimalToHexadecimal( converted0.toLong() );
+
+    return hexadecimal;
 }
 
-// convert from hexadecimal
-QString MainWindow::converyHexadecimalToDecimal(QString hexNumber) {
-  /*  int size = hexNumber.size();
+QString MainWindow::convertHexadecimalToDecimal(QString hexNumber) {
+    int size = hexNumber.size();
 
     // Initializing base value to 1, i.e 16^0
     lli base = 1;
@@ -125,7 +127,8 @@ qlonglong dec_value = 0;
         // it to integral 0-9 by subtracting 48 from
         // ASCII value.
         if (hexNumber.at(counter) >= '0' && hexNumber.at(counter) <= '9'){
-            dec_value += (hexNumber[counter] - 48)*base;
+            dec_value += ( hexNumber[counter].unicode()  - 48)*base;
+
 
             // incrementing base by power
             base *= 16;
@@ -135,17 +138,66 @@ qlonglong dec_value = 0;
         // it to integral 10 - 15 by subtracting 55
         // from ASCII value
         else if (hexNumber.at(counter) >= 'A' && hexNumber.at(counter) <= 'F') {
-            dec_value += (hexNumber[counter] - 55)*base;
+            dec_value += (hexNumber[counter].unicode() - 55)*base;
 
             // incrementing base by power
             base *= 16;
         }
     }
 
-    return QString::number(dec_value);*/
+    return QString::number(dec_value);
 }
 
 QString MainWindow::convertHexadecimalToOctal(QString number) {
+
+    QString converted0;
+    converted0 = convertHexadecimalToDecimal( number );
+    QString octal;
+    octal = convertDecimalToOctal( converted0.toLong() );
+
+    return octal;
+}
+
+QString MainWindow::convertHexadecimalToBinary(QString number) {
+
+    qlonglong convert0;
+    convert0 = convertHexadecimalToDecimal( number ).toInt();
+    qlonglong convert1;
+    convert1 = convertDecimalToBinary( convert0 ).toInt();
+
+    return QString::number(convert1);
+
+}
+
+QString MainWindow::convertOctalToBinary(lli number) {
+
+    qlonglong convert0;
+    convert0 = convertOctalToDecimal( number ).toInt();
+    qlonglong convert1;
+    convert1 = convertDecimalToBinary( convert0 ).toInt();
+
+    return QString::number(convert1);
+
+}
+
+QString MainWindow::convertBinaryToOctal(lli number) {
+
+    qlonglong convert0;
+    convert0 = convertBinaryToDecimal(number).toInt();
+    qlonglong convert1;
+    convert1 = convertDecimalToOctal(convert0).toInt();
+
+    return QString::number( convert1 );
+}
+
+QString MainWindow::convertBinaryToHexadecimal(lli number) {
+
+    qlonglong convert0;
+    convert0 = convertBinaryToDecimal(number).toInt();
+    QString convert1;
+    convert1 = convertDecimalToHexadecimal(convert0);
+
+    return convert1;
 
 }
 
