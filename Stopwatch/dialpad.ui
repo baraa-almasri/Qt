@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>274</width>
-    <height>175</height>
+    <height>197</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,7 +155,7 @@
        <item>
         <widget class="QPushButton" name="killPopup">
          <property name="text">
-          <string>X</string>
+          <string>Start</string>
          </property>
         </widget>
        </item>

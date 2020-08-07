@@ -42,50 +42,55 @@ MainWindow::~MainWindow() {
 
 // timer
 void MainWindow::startFiniteStopWatch() {
+    // set stoping condition to false
     this->stop = false;
-
+    // set timer up sound
     this->timeUp = this->popupSettings->getTimeUpFile();
-
+    // set seconds from the dialpad
     this->seconds = setSeconds();
-
+    // loop from the maximum value to zero
     for(qreal kurrentSecond = this->seconds; kurrentSecond >= 0 ; kurrentSecond -= 0.1) {
         if(this->stop){
             break;
         }
-
+        // display current time on the lcd display
         this->ui->secsDisplay->display(kurrentSecond);
-
+        // delay to make it look like real time
         delayInMilliseconds(0.1 * 1000);
     }
-
+    // display zero, because of the wierd looking final value
     this->ui->secsDisplay->display(0);
-
+    // play timer up sound
     playSound(timeUp);
 
 }
 
+// set stopping boolean to true to stop the timer
 void MainWindow::stopTimer() {
     this->stop = true;
 }
 
 // infinte stopwatch
 void MainWindow::startInfiniteStopWatch() {
+    // set stoping condition to false
     this->stop = false;
-
+    // set timer up sound
     this->timeUp = this->popupSettings->getTimeUpFile();
-
+    // loop from zero to infinity
     for(qreal kurrentSecond = 0;  ; kurrentSecond += 0.1) {
         if(this->stop){
             break;
         }
+        // decplay current time on the lcd display
         this->ui->secsDisplay->display(kurrentSecond);
-
+        // delay to make it look like real time
         delayInMilliseconds(0.1 * 1000);
     }
-
+    // play timer up sound
     playSound(timeUp);
 }
 
+// set ammount of seconds and return the new value
 int MainWindow::setSeconds() {
     // before calling the popup window, you need to create the window form
     // , include its header file in this window
