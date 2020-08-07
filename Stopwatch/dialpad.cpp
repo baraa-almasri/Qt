@@ -7,7 +7,9 @@ dialpad::dialpad(QWidget *parent): QDialog(parent), ui(new Ui::dialpad) {
     this->setSeconds(0);
 
     // buttons setup
-    connect(this->ui->killPopup, SIGNAL(clicked()), this, SLOT(hide()));
+
+    // hide popup window
+    connect(this->ui->killPopup, SIGNAL(clicked()), this, SLOT(GTFOH()));
 
     connect(this->ui->one, SIGNAL(clicked()), this, SLOT(addOne()));
     connect(this->ui->two, SIGNAL(clicked()), this, SLOT(addTwo()));
@@ -28,7 +30,7 @@ dialpad::~dialpad() {
 
 // close the dialog
 void dialpad::GTFOH() {
-
+    hide();
 }
 
 //Numbers

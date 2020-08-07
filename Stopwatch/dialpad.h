@@ -11,6 +11,7 @@ class dialpad : public QDialog {
     Q_OBJECT
 
 public slots:
+    // numbers slots
     void addOne();
     void addTwo();
     void addThree();
@@ -21,12 +22,13 @@ public slots:
     void addEight();
     void addNine();
     void addZero();
+    // hide popup
     void GTFOH();
 
 public:
     explicit dialpad(QWidget *parent = nullptr);
     ~dialpad();
-
+    // setters & getters for the seconds variable
     qreal getSeconds();
     void setSeconds(qreal);
 

@@ -24,10 +24,15 @@ public:
     ~MainWindow();
 
 public slots:
+    // start timer
     void startFiniteStopWatch();
+    // start stopwatch
     void startInfiniteStopWatch();
-    void setSeconds_clicked();
+    // set seconds
+    int setSeconds();
+    // stop timer
     void stopTimer();
+    // open settings function
     void openSettings();
 
 private: // functions

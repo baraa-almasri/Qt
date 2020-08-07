@@ -17,13 +17,16 @@ public:
     QString getTimeUpFile();
 
 public slots:
+    // set timer ending sound to goat screaming
     void setGoatSound();
+    // set timer ending sound to kid screaming blyat
     void setBlyatSound();
+    // set timer ending sound from file
     void setSoundFromFile();
 
 private:
     Ui::Settings *ui;
-
+    // path to timer ending sound file
     QString timeUpFile;
 };
 
