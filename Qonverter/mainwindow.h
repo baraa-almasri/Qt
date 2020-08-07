@@ -4,8 +4,7 @@
 #include <QMainWindow>
 #include <QChar>
 #include <QCharRef>
-#include <string>
-using std::string;
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,11 +16,13 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public slots:
-
+    // buttons actions
     void convertDecimalToOthers();
     void convertBinaryToOthers();
     void convertOctalToOthers();
     void convertHexadecimalToOthers();
+    // about app
+    void showAbout();
 
 
 public:
@@ -31,17 +32,11 @@ public:
 private: // variables
     Ui::MainWindow *ui;
 
-    // numbers
-    QString binary;
-    QString decimal;
-    QString octal;
-    QString hexadecimal;
-
 public:
     // clear number boxes
     void clearBoxes();
 
-    // static functions
+    // static functions:
 
     // reverse string function
     static QString reverseString(QString);
