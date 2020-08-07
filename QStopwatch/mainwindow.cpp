@@ -5,11 +5,10 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     // instead of putting every thing over here
     ui->setupUi(this);
 
-    //
+    // set initial stopping condition to false
     this->stop = false;
 
     // buttons setup
-
     connect(this->ui->finiteStopwatch, SIGNAL(clicked()), this, SLOT(startFiniteStopWatch()));
     connect(this->ui->infiniteStopwatch, SIGNAL(clicked()), this, SLOT(startInfiniteStopWatch()));
     connect(this->ui->killTimer, SIGNAL(clicked()), this, SLOT(stopTimer()));
@@ -19,19 +18,19 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 
     // setup dialpad dialog
     this->popupDialpad = new dialpad(this);
+
     // setup settings dialog
     this->popupSettings = new Settings(this);
 
-    // resetup seconds display
+    /*// resetup seconds display
     delete this->ui->secsDisplay;
     ui->secsDisplay = new QLCDNumber(10, ui->centralwidget);
     ui->secsDisplay->setObjectName(QString::fromUtf8("secsDisplay"));
 
     ui->verticalLayout->addWidget(ui->secsDisplay);
-    //this->ui->secsDisplay = new QLCDNumber(1000000000, this);
-
+*/
     // default sound
-    this->popupSettings->setTimeUpFile( "qrc:/mp3s/timerFinishes(goat).mp3" );
+    this->popupSettings->setTimeUpFile( "qrc:/resources/timerFinishes(goat).mp3" );
 
 
 }

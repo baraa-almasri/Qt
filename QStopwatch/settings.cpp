@@ -11,9 +11,6 @@ Settings::Settings(QWidget *parent) : QDialog(parent), ui(new Ui::Settings) {
     connect(this->ui->blyat, SIGNAL(clicked()), this, SLOT(setBlyatSound()));
     connect(this->ui->setSoundFile, SIGNAL(clicked()), this, SLOT(setSoundFromFile()));
 
-    //connect(this->ui->blyat, SIGNAL(clicked()), this, SLOT(setBlyatSound()));
-
-
 }
 
 Settings::~Settings() {
@@ -21,11 +18,11 @@ Settings::~Settings() {
 }
 
 void Settings::setGoatSound() {
-    this->setTimeUpFile( "qrc:/mp3s/timerFinishes(goat).mp3" );
+    this->setTimeUpFile( "qrc:/resources/timerFinishes(goat).mp3" );
 }
 
 void Settings::setBlyatSound() {
-    this->setTimeUpFile( "qrc:/mp3s/timerFinishes(blyaaaat).mp3" );
+    this->setTimeUpFile( "qrc:/resources/timerFinishes(blyaaaat).mp3" );
 }
 
 
