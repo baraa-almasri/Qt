@@ -1,4 +1,4 @@
-#include "dialpad.h"
+#include "src/headers/dialpad.h"
 #include "ui_dialpad.h"
 
 dialpad::dialpad(QWidget *parent): QDialog(parent), ui(new Ui::dialpad) {

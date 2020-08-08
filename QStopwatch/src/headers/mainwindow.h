@@ -8,6 +8,7 @@
 #include <math.h>
 #include "dialpad.h"
 #include "settings.h"
+#include "pausemenu.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -34,6 +35,8 @@ public slots:
     void stopTimer();
     // open settings function
     void openSettings();
+    // halt the timer
+    void pauseTimer();
 
 private: // functions
     // static functions
@@ -53,6 +56,8 @@ private: // variables
     QString timeUp;
     // settings instance object
     Settings *popupSettings;
+    // pause popup dialog
+    pauseMenu *popupPause;
 };
 
 #endif // MAINWINDOW_H

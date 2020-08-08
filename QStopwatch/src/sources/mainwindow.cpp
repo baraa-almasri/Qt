@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "src/headers/mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     connect(this->ui->finiteStopwatch, SIGNAL(clicked()), this, SLOT(startFiniteStopWatch()));
     connect(this->ui->infiniteStopwatch, SIGNAL(clicked()), this, SLOT(startInfiniteStopWatch()));
     connect(this->ui->killTimer, SIGNAL(clicked()), this, SLOT(stopTimer()));
+    connect(this->ui->pauseTimer, SIGNAL(clicked()), this, SLOT(pauseTimer()));
 
     connect(this->ui->_exec66 , SIGNAL(clicked()), qApp, SLOT(quit()));
     connect(this->ui->openSettingsPopup, SIGNAL(clicked()), this, SLOT(openSettings()));
@@ -22,15 +23,11 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     // setup settings dialog
     this->popupSettings = new Settings(this);
 
-    /*// resetup seconds display
-    delete this->ui->secsDisplay;
-    ui->secsDisplay = new QLCDNumber(10, ui->centralwidget);
-    ui->secsDisplay->setObjectName(QString::fromUtf8("secsDisplay"));
+    // setup pause menu
+    this->popupPause = new pauseMenu(this);
 
-    ui->verticalLayout->addWidget(ui->secsDisplay);
-*/
     // default sound
-    this->popupSettings->setTimeUpFile( "qrc:/resources/timerFinishes(goat).mp3" );
+    this->popupSettings->setTimeUpFile( "qrc:/assets/timerFinishes(goat).mp3" );
 
 
 }
@@ -109,4 +106,11 @@ void MainWindow::openSettings() {
 
     this->popupSettings->show();
 
+}
+
+// pause the timer until said otherwise
+void MainWindow::pauseTimer() {
+    // this popup will pause the main program
+    this->popupPause->setModal(true);
+    this->popupPause->exec();
 }

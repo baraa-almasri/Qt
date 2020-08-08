@@ -16,21 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    dialpad.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    settings.cpp \
-    staticFunctions.cpp
+    src/sources/pausemenu.cpp \
+    src/sources/dialpad.cpp \
+    src/sources/main.cpp \
+    src/sources/mainwindow.cpp \
+    src/sources/settings.cpp \
+    src/sources/staticFunctions.cpp
 
 HEADERS += \
-    dialpad.h \
-    mainwindow.h \
-    settings.h
+    src/headers/pausemenu.h \
+    src/headers/dialpad.h \
+    src/headers/mainwindow.h \
+    src/headers/settings.h
 
 FORMS += \
-    dialpad.ui \
-    mainwindow.ui \
-    settings.ui
+    forms/dialpad.ui \
+    forms/mainwindow.ui \
+    forms/settings.ui \
+    forms/pausemenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

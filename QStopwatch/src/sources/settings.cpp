@@ -1,4 +1,4 @@
-#include "settings.h"
+#include "src/headers/settings.h"
 #include "ui_settings.h"
 
 Settings::Settings(QWidget *parent) : QDialog(parent), ui(new Ui::Settings) {
@@ -18,11 +18,11 @@ Settings::~Settings() {
 }
 
 void Settings::setGoatSound() {
-    this->setTimeUpFile( "qrc:/resources/timerFinishes(goat).mp3" );
+    this->setTimeUpFile( "qrc:/assets/timerFinishes(goat).mp3" );
 }
 
 void Settings::setBlyatSound() {
-    this->setTimeUpFile( "qrc:/resources/timerFinishes(blyaaaat).mp3" );
+    this->setTimeUpFile( "qrc:/assets/timerFinishes(blyaaaat).mp3" );
 }
 
 
