@@ -57,7 +57,7 @@ void MainWindow::startFiniteStopWatch() {
     // display zero, because of the wierd looking final value
     this->ui->secsDisplay->display(0);
     // play timer up sound
-    playSound(timeUp);
+    playSound(timeUp, this->popupSettings->setVolume());
 
 }
 
@@ -83,7 +83,7 @@ void MainWindow::startInfiniteStopWatch() {
         delayInMilliseconds(0.1 * 1000);
     }
     // play timer up sound
-    playSound(timeUp);
+    playSound(timeUp, this->popupSettings->setVolume());
 }
 
 // set ammount of seconds and return the new value

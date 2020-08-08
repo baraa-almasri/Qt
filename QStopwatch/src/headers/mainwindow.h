@@ -40,7 +40,7 @@ public slots:
 
 private: // functions
     // static functions
-    static void playSound(QString);
+    static void playSound(QString, short);
     static void delayInMilliseconds(double);
 
 
@@ -58,6 +58,8 @@ private: // variables
     Settings *popupSettings;
     // pause popup dialog
     pauseMenu *popupPause;
+    // time up volume
+    short volume;
 };
 
 #endif // MAINWINDOW_H

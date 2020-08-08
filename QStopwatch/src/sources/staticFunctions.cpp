@@ -12,7 +12,7 @@ void MainWindow::delayInMilliseconds( double millisecondsToWait ) {
 }
 
 // play sound
-void MainWindow::playSound(QString filePath) {
+void MainWindow::playSound(QString filePath, short volume) {
     QMediaPlayer *player = new QMediaPlayer;
 
     // will be discussed later
@@ -24,7 +24,7 @@ void MainWindow::playSound(QString filePath) {
     }
     //
 
-    player->setVolume(100);
+    player->setVolume(volume);
     player->play();
 
 }

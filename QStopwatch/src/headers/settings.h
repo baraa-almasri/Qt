@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QInputDialog>
 
 namespace Ui {
 class Settings;
@@ -23,6 +24,8 @@ public slots:
     void setBlyatSound();
     // set timer ending sound from file
     void setSoundFromFile();
+    // set volume
+    short setVolume();
 
 private:
     Ui::Settings *ui;

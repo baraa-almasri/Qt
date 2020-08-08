@@ -10,7 +10,6 @@ Settings::Settings(QWidget *parent) : QDialog(parent), ui(new Ui::Settings) {
     connect(this->ui->goat, SIGNAL(clicked()), this, SLOT(setGoatSound()));
     connect(this->ui->blyat, SIGNAL(clicked()), this, SLOT(setBlyatSound()));
     connect(this->ui->setSoundFile, SIGNAL(clicked()), this, SLOT(setSoundFromFile()));
-
 }
 
 Settings::~Settings() {
@@ -25,8 +24,10 @@ void Settings::setBlyatSound() {
     this->setTimeUpFile( "qrc:/assets/timerFinishes(blyaaaat).mp3" );
 }
 
+short Settings::setVolume() {
+    return (short)this->ui->volumeSlider->value();
+}
 
-#include <QInputDialog>
 void Settings::setSoundFromFile() {
     this->timeUpFile = QInputDialog::getText(this, "File Path", "Enter File Path", QLineEdit::Normal);
 }
