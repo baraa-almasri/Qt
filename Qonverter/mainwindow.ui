@@ -244,7 +244,14 @@
     <item row="10" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <widget class="QDoubleSpinBox" name="decimalNumber"/>
+       <widget class="QDoubleSpinBox" name="decimalNumber">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>9999999999999.990234375000000</double>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="convertDecimalToOthers">
@@ -260,13 +267,16 @@
       <item>
        <widget class="QDoubleSpinBox" name="binaryNumber">
         <property name="decimals">
-         <number>2</number>
+         <number>10</number>
         </property>
         <property name="minimum">
          <double>0.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>11111111.109999999403954</double>
+         <double>1111111111111.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -334,7 +344,14 @@
     <item row="7" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QDoubleSpinBox" name="octalNumber"/>
+       <widget class="QDoubleSpinBox" name="octalNumber">
+        <property name="decimals">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <double>7777777777777.990234375000000</double>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="convertOctalToOthers">

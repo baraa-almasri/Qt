@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainW
     connect(this->ui->_66, SIGNAL(clicked()), qApp, SLOT(quit()));
     connect(this->ui->getAbout, SIGNAL(clicked()), this, SLOT(showAbout()));
 
-
     this->ui->hexadecimalNumber->setText("0.0");
 }
 
@@ -76,6 +75,7 @@ void MainWindow::clearBoxes() {
 
 void MainWindow::updateBoxes(QString _2, QString _8, QString _10, QString _16) {
     QDoubleSpinBox tmp;
+    tmp.setMaximum(9999999999999);
 
     this->ui->octalNumber->setValue( tmp.valueFromText(_8) );
     this->ui->decimalNumber->setValue(tmp.valueFromText(_10));
