@@ -2,9 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QChar>
-#include <QCharRef>
-#include <QMessageBox>
+#include <QString>
+#include <QMessageBox> // about popup
+#include "Converter/BinaryConverter.hpp"
+#include "Converter/OctalConverter.hpp"
+#include "Converter/DecimalConverter.hpp"
+#include "Converter/HexadecimalConverter.hpp"
+#include <QDoubleSpinBox> // valueFromText
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,28 +39,7 @@ private: // variables
 public:
     // clear number boxes
     void clearBoxes();
-
-    // static functions:
-
-    // reverse string function
-    static QString reverseString(QString);
-
-    // convert from decimal
-    static QString convertDecimalToBinary(lli);
-    static QString convertDecimalToOctal(lli);
-    static QString convertDecimalToHexadecimal(lli);
-    // convert from binary
-    static QString convertBinaryToDecimal(lli);
-    static QString convertBinaryToOctal(lli);
-    static QString convertBinaryToHexadecimal(lli);
-    // convert from octal
-    static QString convertOctalToDecimal(lli);
-    static QString convertOctalToHexadecimal(lli);
-    static QString convertOctalToBinary(lli);
-    // convert from hexadecimal
-    static QString convertHexadecimalToDecimal(QString);
-    static QString convertHexadecimalToOctal(QString);
-    static QString convertHexadecimalToBinary(QString);
+    void updateBoxes(QString _2, QString _8, QString _10, QString _16);
 
 };
 #endif // MAINWINDOW_H

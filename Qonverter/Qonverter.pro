@@ -17,11 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    staticFunctions.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    Converter/BinaryConverter.hpp \
+    Converter/OctalConverter.hpp \
+    Converter/DecimalConverter.hpp \
+    Converter/HexadecimalConverter.hpp \
 
 FORMS += \
     mainwindow.ui

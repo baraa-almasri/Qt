@@ -13,12 +13,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainW
     connect(this->ui->_66, SIGNAL(clicked()), qApp, SLOT(quit()));
     connect(this->ui->getAbout, SIGNAL(clicked()), this, SLOT(showAbout()));
 
-    // initial values
-    this->ui->decimalNumber->setText("0");
-    this->ui->binaryNumber->setText("0");
-    this->ui->octalNumber->setText("0");
-    this->ui->hexadecimalNumber->setText("0");
 
+    this->ui->hexadecimalNumber->setText("0.0");
 }
 
 MainWindow::~MainWindow() {
@@ -26,54 +22,65 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::convertDecimalToOthers() {
-    qlonglong tmp = this->ui->decimalNumber->toMarkdown().toLong();
+    double tmp = this->ui->decimalNumber->value();
 
     clearBoxes();
 
-    this->ui->decimalNumber->setText( QString::number( tmp ) );
-    this->ui->binaryNumber->setText( convertDecimalToBinary( tmp ) );
-    this->ui->octalNumber->setText( convertDecimalToOctal( tmp ) );
-    this->ui->hexadecimalNumber->setText( convertDecimalToHexadecimal( tmp ) );
+    this->updateBoxes(
+        DecimalConverter::convertToBinary(tmp).c_str(),
+        DecimalConverter::convertToOctal(tmp).c_str(),
+        QString::number(tmp),
+        DecimalConverter::convertToHexadecimal(tmp).c_str()
+
+    );
+
 }
 
 void MainWindow::convertBinaryToOthers() {
-    qlonglong tmp = this->ui->binaryNumber->toMarkdown().toLong();
+    double tmp = this->ui->binaryNumber->value();
 
     clearBoxes();
 
-    this->ui->binaryNumber->setText( QString::number(tmp) );
-    this->ui->decimalNumber->setText( convertBinaryToDecimal(tmp) ) ;
-    this->ui->octalNumber->setText( convertBinaryToOctal(tmp));
-    this->ui->hexadecimalNumber->setText( convertBinaryToHexadecimal(tmp) );
+    this->ui->binaryNumber->setValue(tmp);
+    this->ui->decimalNumber->valueFromText( QString::fromStdString( BinaryConverter::convertToDecimal(tmp) ) ) ;
+    this->ui->octalNumber->valueFromText( QString::fromStdString( BinaryConverter::convertToOctal(tmp) ) );
+    this->ui->hexadecimalNumber->setText( QString::fromStdString( BinaryConverter::convertToHexadecimal(tmp) ) );
 }
 
 void MainWindow::convertOctalToOthers() {
-    qlonglong tmp = this->ui->octalNumber->toMarkdown().toLong();
+    double tmp = this->ui->octalNumber->value();
 
     clearBoxes();
 
-    this->ui->octalNumber->setText( QString::number( tmp ) );
-    this->ui->decimalNumber->setText( convertOctalToDecimal( tmp ) );
-    this->ui->hexadecimalNumber->setText( convertOctalToHexadecimal( tmp ) ) ;
-    this->ui->binaryNumber->setText( convertOctalToBinary( tmp ) );
+    this->ui->octalNumber->setValue( tmp );
+    this->ui->decimalNumber->valueFromText(QString::fromStdString( OctalConverter::convertToDecimal(tmp) ));
+    this->ui->hexadecimalNumber->setText( QString::fromStdString( OctalConverter::convertToHexadecimal(tmp) ) ) ;
+    this->ui->binaryNumber->valueFromText(QString::fromStdString( OctalConverter::convertToBinary(tmp) ));
 }
 
 void MainWindow::convertHexadecimalToOthers() {
-    QString tmp = this->ui->hexadecimalNumber->toMarkdown();// >toHtml();
+    std::string tmp = this->ui->hexadecimalNumber->toMarkdown().toStdString();
 
     clearBoxes();
 
-    this->ui->hexadecimalNumber->setText( tmp );
-    this->ui->octalNumber->setText( convertHexadecimalToOctal( tmp ) );
-    this->ui->decimalNumber->setText( convertHexadecimalToDecimal( tmp ) );
-    this->ui->binaryNumber->setText( convertHexadecimalToBinary( tmp ) );
+    this->ui->hexadecimalNumber->setText( QString::fromStdString(tmp) );
+    this->ui->octalNumber->valueFromText( QString::fromStdString(HexadecimalConverter::convertToOctal(tmp) ));
+    this->ui->decimalNumber->valueFromText( QString::fromStdString(HexadecimalConverter::convertToOctal(tmp) ) );
+    this->ui->binaryNumber->valueFromText( QString::fromStdString(HexadecimalConverter::convertToOctal(tmp) ) );
 }
 
 void MainWindow::clearBoxes() {
-    this->ui->decimalNumber->setText("0");
-    this->ui->binaryNumber->setText("0");
-    this->ui->octalNumber->setText("0");
-    this->ui->hexadecimalNumber->setText("0");
+    this->updateBoxes("0.0", "0.0", "0.0", "0.0");
+
+}
+
+void MainWindow::updateBoxes(QString _2, QString _8, QString _10, QString _16) {
+    QDoubleSpinBox tmp;
+
+    this->ui->octalNumber->setValue( tmp.valueFromText(_8) );
+    this->ui->decimalNumber->setValue(tmp.valueFromText(_10));
+    this->ui->hexadecimalNumber->setText(_16) ;
+    this->ui->binaryNumber->setValue(tmp.valueFromText(_2));
 
 }
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>284</width>
+    <width>316</width>
     <height>571</height>
    </rect>
   </property>
@@ -244,14 +244,7 @@
     <item row="10" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <widget class="QTextEdit" name="decimalNumber">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QDoubleSpinBox" name="decimalNumber"/>
       </item>
       <item>
        <widget class="QPushButton" name="convertDecimalToOthers">
@@ -265,12 +258,15 @@
     <item row="4" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QTextEdit" name="binaryNumber">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+       <widget class="QDoubleSpinBox" name="binaryNumber">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="minimum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>11111111.109999999403954</double>
         </property>
        </widget>
       </item>
@@ -338,14 +334,7 @@
     <item row="7" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QTextEdit" name="octalNumber">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QDoubleSpinBox" name="octalNumber"/>
       </item>
       <item>
        <widget class="QPushButton" name="convertOctalToOthers">
