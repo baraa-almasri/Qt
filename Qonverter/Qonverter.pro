@@ -36,3 +36,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Qonverter.qrc
+
+ANDROID_ABIS = armeabi-v7a

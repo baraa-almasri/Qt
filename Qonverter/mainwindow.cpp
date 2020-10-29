@@ -40,10 +40,13 @@ void MainWindow::convertBinaryToOthers() {
 
     clearBoxes();
 
-    this->ui->binaryNumber->setValue(tmp);
-    this->ui->decimalNumber->valueFromText( QString::fromStdString( BinaryConverter::convertToDecimal(tmp) ) ) ;
-    this->ui->octalNumber->valueFromText( QString::fromStdString( BinaryConverter::convertToOctal(tmp) ) );
-    this->ui->hexadecimalNumber->setText( QString::fromStdString( BinaryConverter::convertToHexadecimal(tmp) ) );
+    this->updateBoxes(
+        QString::number(tmp),
+        BinaryConverter::convertToOctal(tmp).c_str(),
+        BinaryConverter::convertToDecimal(tmp).c_str(),
+        BinaryConverter::convertToHexadecimal(tmp).c_str()
+
+    );
 }
 
 void MainWindow::convertOctalToOthers() {
@@ -51,21 +54,36 @@ void MainWindow::convertOctalToOthers() {
 
     clearBoxes();
 
-    this->ui->octalNumber->setValue( tmp );
-    this->ui->decimalNumber->valueFromText(QString::fromStdString( OctalConverter::convertToDecimal(tmp) ));
-    this->ui->hexadecimalNumber->setText( QString::fromStdString( OctalConverter::convertToHexadecimal(tmp) ) ) ;
-    this->ui->binaryNumber->valueFromText(QString::fromStdString( OctalConverter::convertToBinary(tmp) ));
+    this->updateBoxes(
+        OctalConverter::convertToBinary(tmp).c_str(),
+        QString::number(tmp),
+        OctalConverter::convertToDecimal(tmp).c_str(),
+        OctalConverter::convertToHexadecimal(tmp).c_str()
+
+    );
 }
 
 void MainWindow::convertHexadecimalToOthers() {
     std::string tmp = this->ui->hexadecimalNumber->toMarkdown().toStdString();
 
+    // removing additional shitty characters
+    // when jucied out from the text bar it looks like this
+    // \\`\\d+\\`\\n\\n
+    tmp = tmp.substr(1, tmp.size()-4);
+
+    // something is corrupter in the converter class
+    // the additional floating point fixes it :)
+    tmp += tmp.find('.') == -1? ".0": "";
+
     clearBoxes();
 
-    this->ui->hexadecimalNumber->setText( QString::fromStdString(tmp) );
-    this->ui->octalNumber->valueFromText( QString::fromStdString(HexadecimalConverter::convertToOctal(tmp) ));
-    this->ui->decimalNumber->valueFromText( QString::fromStdString(HexadecimalConverter::convertToOctal(tmp) ) );
-    this->ui->binaryNumber->valueFromText( QString::fromStdString(HexadecimalConverter::convertToOctal(tmp) ) );
+    this->updateBoxes(
+        HexadecimalConverter::convertToBinary(tmp).c_str(),
+        HexadecimalConverter::convertToOctal(tmp).c_str(),
+        HexadecimalConverter::convertToDecimal(tmp).c_str(),
+        QString::fromStdString(tmp)
+
+    );
 }
 
 void MainWindow::clearBoxes() {

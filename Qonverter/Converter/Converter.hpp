@@ -35,10 +35,10 @@ protected:
         );
 
         // converting number after floating point
-        finalNumber += 
+        finalNumber += num.pointIndex != -1?
             (originalBase == 10? convertPostPoint10: 
                 convertPostPoint)(num.postPoint, targetBase
-            );
+            ): "";
 
         return finalNumber;
     }
