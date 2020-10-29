@@ -76,6 +76,7 @@ void MainWindow::clearBoxes() {
 void MainWindow::updateBoxes(QString _2, QString _8, QString _10, QString _16) {
     QDoubleSpinBox tmp;
     tmp.setMaximum(9999999999999);
+    tmp.setDecimals(99);
 
     this->ui->octalNumber->setValue( tmp.valueFromText(_8) );
     this->ui->decimalNumber->setValue(tmp.valueFromText(_10));
